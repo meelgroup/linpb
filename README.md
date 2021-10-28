@@ -26,15 +26,6 @@ Underlying PB Solver: [RoundingSat](https://gitlab.com/miao_research/roundingsat
 
 Note: We recommend to encode short xors into pb constraints, while for larger xors please use XOR constraints directly.
 
-### Potential Bug
-
-You may encounter a failed assertion if using SoPlex:
-
-`spxdevexpr.hpp:695: soplex::SPxId soplex::SPxDevexPR<R>::selectEnterHyperCoDim(R&, R) [with R = double]: 
-Assertion 'bestPricesCo.size() == 0' failed.`
-
-The bug will be fixed in the upcoming bugfix release of SoPlex, clarified by SoPlex team. Before that, you can simply comment out this assertion.
-
 ## How to Build
 
 In the root directory of LinPB:
@@ -79,6 +70,15 @@ Find more options:
 ```
 $ ./build/linpb --help
 ```
+
+### Potential Bug
+
+You may encounter a failed assertion if using SoPlex:
+
+`spxdevexpr.hpp:695: soplex::SPxId soplex::SPxDevexPR<R>::selectEnterHyperCoDim(R&, R) [with R = double]: 
+Assertion 'bestPricesCo.size() == 0' failed.`
+
+The bug will be fixed in the upcoming bugfix release of SoPlex, clarified by SoPlex team. Before that, you can simply comment out this assertion.
 
 ## References
 
