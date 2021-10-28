@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 2.8.2)
+
+project(soplex-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(soplex_pkg
+    URL "${soplex_pkg}"
+    URL_MD5 d5cad9b70fbee1a8fbb588786016e8ed
+    CMAKE_ARGS ${soplex_cmake_args}
+    SOURCE_DIR ${soplex_dir}/source
+    BINARY_DIR ${soplex_dir}/build
+    INSTALL_DIR ${soplex_dir}/install
+)
+
+ExternalProject_Add_StepTargets(soplex_pkg update)
