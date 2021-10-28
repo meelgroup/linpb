@@ -1,0 +1,5 @@
+# editor
+.idea/*
+
+# soplex
+/soplex-5.0*
