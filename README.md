@@ -1,7 +1,7 @@
 # LinPB: PB-XOR Solver
 
 [![CP](https://img.shields.io/badge/CP-2021-blue.svg)](https://drops.dagstuhl.de/opus/volltexte/2021/15349/)
-[![Dataset](https://img.shields.io/badge/paper-Dataset-yellow.svg)](https://doi.org/10.5281/zenodo.5815039)
+[![Dataset](https://img.shields.io/badge/paper-Dataset-yellow.svg)](https://doi.org/10.5281/zenodo.5526834)
 [![Application](https://img.shields.io/badge/application-ApproxMCPB-orange.svg)](https://github.com/meelgroup/approxmcpb)
 
 SAT Solver for linear pseudo boolean and xor constraints.
