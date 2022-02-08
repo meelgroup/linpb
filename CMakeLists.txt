@@ -34,6 +34,10 @@ set(gmp "OFF"
 set(testruns_timeout 1
     CACHE STRING "Timeout of individual test runs.")
 
+if(${build_static})
+    set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+endif()
+
 IF(soplex)
     # provides libsoplex and ${SOPLEX_INCLUDE_DIRS}
     include(${PROJECT_SOURCE_DIR}/cmake/soplex_build_and_load.cmake)
