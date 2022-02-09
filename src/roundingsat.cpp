@@ -40,7 +40,7 @@ namespace rs {
 
 bool asynch_interrupt;
 DLL_PUBLIC Options options;
-Stats stats;
+DLL_PUBLIC Stats stats;
 
 }  // namespace rs
 
