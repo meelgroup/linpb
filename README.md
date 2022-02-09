@@ -46,19 +46,6 @@ For more builds, similar build directories can be created.
 
 - C++17 (i.e., a reasonably recent compiler)
 - Boost library: https://www.boost.org
-- Optionally: SoPlex LP solver (see below)
-
-### SoPlex
-
-RoundingSat underlying LinPB supports an integration with the LP solver SoPlex to improve its search routine.
-For this, first download SoPlex at [here](https://soplex.zib.de/download.php?fname=soplex-5.0.1.tgz) and place the downloaded file in the root directory of LinPB.
-Next, follow the above build process, but configure with the cmake option `-Dsoplex=ON`:
-
-    cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -Dsoplex=ON ..
-    make
-
-The location of the SoPlex package can be configured with the cmake option `-Dsoplex_pkg=<location>`.
 
 ## How to Use
 
@@ -70,15 +57,6 @@ Find more options:
 ```
 $ ./build/linpb --help
 ```
-
-### Potential Bug
-
-You may encounter a failed assertion if using SoPlex:
-
-`spxdevexpr.hpp:695: soplex::SPxId soplex::SPxDevexPR<R>::selectEnterHyperCoDim(R&, R) [with R = double]: 
-Assertion 'bestPricesCo.size() == 0' failed.`
-
-The bug will be fixed in the upcoming bugfix release of SoPlex, clarified by SoPlex team. Before that, you can simply comment out this assertion.
 
 ## References
 
