@@ -338,8 +338,13 @@ bool Solver::add_xor_clause_inter(const std::vector<Lit>& lits, bool rhs, const 
 	}
 
 	// debug
-	if (conf.verbosity > 0)
-		cout << xors.back() << endl;
+	if (conf.verbosity > 0) {
+		if (ps.size() > 2) {
+			cout << xors.back() << endl;
+		} else {
+			cout << Xor(ps, rhs, vector<uint32_t>()) << endl;
+		}
+	}
 
 	return ok;
 }
