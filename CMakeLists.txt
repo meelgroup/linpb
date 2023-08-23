@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 # a smaller version. It is known not to compile with version 1.53.0 and lower.
 find_package(Boost 1.67 REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
+include_directories(${CRYPTOMINISAT5_INCLUDE_DIRS})
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/")
 
@@ -33,6 +34,10 @@ set(gmp "OFF"
 
 set(testruns_timeout 1
     CACHE STRING "Timeout of individual test runs.")
+
+if(${build_static})
+    set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+endif()
 
 IF(soplex)
     # provides libsoplex and ${SOPLEX_INCLUDE_DIRS}
@@ -102,6 +107,7 @@ set(source_files
     src/quit.cpp
     src/roundingsat.cpp
     src/run.cpp
+    src/main.cpp
     # add gauss files
     src/gaussian/solverwrapper.cpp
     src/gaussian/gaussian.cpp
@@ -125,6 +131,8 @@ set(header_files
     src/parsing.hpp
     src/quit.hpp
     src/run.hpp
+    src/roundingsat.h
+    src/time_mem.h
     # add gauss files
     src/gaussian/Vec.h
     src/gaussian/constants.h
@@ -143,6 +151,8 @@ set(header_files
     src/gaussian/solvertypesmini.h.in
     src/gaussian/vardata.h
     src/gaussian/toplevelgaussabst.h
+    # CMS files
+    src/cryptominisat5/solvertypesmini.h
 )
 
 # m4ri
@@ -153,11 +163,10 @@ endif (M4RI_FOUND)
 
 set(all_files ${source_files} ${header_files})
 
-# add_executable(linpb ${source_files})
-##################################################
-# add linpb as a library
-add_library(linpb STATIC ${source_files})
-set(PROJECT_VERSION_MAJOR 2)
+add_executable(linpb ${source_files})
+
+# specify version info
+set(PROJECT_VERSION_MAJOR 1)
 set(PROJECT_VERSION_MINOR 0)
 set_target_properties(linpb PROPERTIES
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
